@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ farmer_crop.crop_type.name }}</h2>
+<p>Farmer: {{ farmer_crop.farmer.username }}</p>
+<p>Quantity: {{ farmer_crop.quantity_kg }} kg</p>
+<p>Price per kg: Rs{{ farmer_crop.price_per_kg }}</p>
+<p>Location: {{ farmer_crop.location }}</p>
+<p>Available From: {{ farmer_crop.available_from }}</p>
+ p>Available Until: {{ farmer_crop.available_until }}</p>
+<p>Posted on: {{ farmer_crop.created_at }}</p>
+
+<a href="{% url 'farmer_crop_list' %}">Back to Crops List</a>
+{% endblock %}

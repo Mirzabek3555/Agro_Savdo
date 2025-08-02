@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 >{{ crop_type.name }}</h2>
+<p>{{ crop_type.description }}</p>
+
+<div>
+    {% for img in images %}
+        <img src="{{ img.image.url }}" alt="{{ crop_type.name }}" style="width: 200px; height: auto; margin: 5px;">
+    {% endfor %}
+</div>
+
+<a href="{% url 'crop_type_list' %}">Back to Crop List</a>
+{% endblock %}

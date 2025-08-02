@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="content">
+            <h1>Connect Farmers Directly to Sellers</h1>
+            <p>Eliminate middlemen, ensure fair prices for farmers,essential tools like crop calendars, weather forecasts, market prices, and expert training. Our integrated digital platform empowers farmers to take control of their livelihoods while building more sustainable and profitable agricultural businesses.</p>
+            <a href="{% url 'crop_type_list' %}">
+                <button class="view-magazine">Go to Market</button>
+            </a>
+        </div>
+        <div class="image">
+	  <img src="{% static 'mainapp/images/Home page image.png' %}" alt="Magazine Cover">
+        </div>
+    </section>
+
+
+    <div class="features-container">
+        <a href="{% url 'crop_calendar' %}"  style="text-decoration: none;">
+        <div class="feature">
+	  <img src="{% static 'mainapp/images/crop calendar.png' %}" alt="crop calendar">
+            <h3>Crop Calendar</h3>
+            <p>Plan your crops effectively with seasonal guidance.</p>
+        </div>
+        </a>
+        <a href="{% url 'crop_calendar' %}"  style="text-decoration: none;">
+        <div class="feature">
+	  <img src="{% static 'mainapp/images/weather forecastt.jpg' %}" alt="weather forecast">
+            <h3>Weather Updates</h3>
+            <p>Get real-time weather forecasts to protect your crops.</p>
+        </div>
+        <a href="{% url 'market_price' %}"  style="text-decoration: none;">
+        <div class="feature">
+	  <img src="{% static 'mainapp/images/market pricee.png' %}" alt="market-price">
+            <h3>Market Prices</h3>
+            <p>Access live market prices to sell at the best rates.</p>
+        </div>
+        </a>
+        <div class="feature">
+	  <img src="{% static 'mainapp/images/discussion.jpg' %}" alt="Discussion">
+            <h3>Discussion Forums</h3>
+            <p>Engage with fellow farmers and Share Experiences.</p>
+        </div>
+        <div class="feature">
+	  <img src="{% static 'mainapp/images/expert.jpg' %}" alt="video-training">
+            <h3>Useful Videos from Expert</h3>
+            <p>Learn from Agricultural Eperts through Video Tutorials.</p>
+        </div>
+        <div class="feature">
+	  <img src="{% static 'mainapp/images/law.jpg' %}" alt="Policies">
+            <h3>Laws and Policies</h3>
+            <p>Stay Updated with Government Laws and Policies.</p>
+        </div>
+    </div>
+    <div class="video-slider">
+        <h2 style="text-align: center;">Videos From Experts</h2>
+        <button class="nav-btn prev">&#10094;</button>
+        <div class="video-track">
+            <div class="video-slide">
+                <iframe src="https://www.youtube.com/embed/Sxr0RqYL1F0" title="Shaking up farming in rural Nepal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              
+            <div class="video-slide"><iframe src="https://www.youtube.com/embed/pY_9TxAg95M?si=X07eyl2zVUiUuAH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            
+            <div class="video-slide"><iframe src="https://www.youtube.com/embed/AUl5pkIrmyA?si=WcnMBHNbQnLBot4G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+            <div class="video-slide">
+                <iframe src="https://www.youtube.com/embed/Sxr0RqYL1F0" title="Shaking up farming in rural Nepal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
+              
+            <div class="video-slide"><iframe src="https://www.youtube.com/embed/pY_9TxAg95M?si=X07eyl2zVUiUuAH8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            
+            <div class="video-slide"><iframe src="https://www.youtube.com/embed/AUl5pkIrmyA?si=WcnMBHNbQnLBot4G" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+        </div>
+        <button class="nav-btn next">&#10095;</button>
+    </div>
+    <h2 style="text-align: center;">Discussions</h2>
+    <div class="dis-container">
+        <div class="card">
+            <img src="{% static 'mainapp/images/dq1.jpeg' %}" alt="Crop Issue">
+            <h4>Vishal • Basnet</h4>
+            <p>My plant is suffering from this disease. Can anyone identify its cause and remedies?</p>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Post</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'mainapp/images/d2.jpeg' %}" alt="Crop Issue">
+            <h4>Ravi • Shrestha</h4>
+            <p>My plant is suffering from this disease. Can anyone identify its cause and remedies?</p>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Post</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="{% static 'mainapp/images/d3.jpg' %}" alt="Crop Issue">
+            <h4>Priya • Pande</h4>
+            <p>My plant is suffering from this disease. Can anyone identify its cause and remedies?</p>
+            <div class="comment-section">
+                <input type="text" placeholder="Add a comment...">
+                <button>Post</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-problem">
+        <h3>Post Your Crop Issue</h3>
+        <textarea rows="4" placeholder="Describe your problem..."></textarea>
+        <div class="file-upload">
+            <label>Upload Photo: <input type="file" accept="image/*"></label>
+            <label>Upload Video: <input type="file" accept="video/*"></label>
+            <label>Upload Voice: <input type="file" accept="audio/*"></label>
+        </div>
+        <button>Post Problem</button>
+    </div>
+
+    <script>
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+        const track = document.querySelector('.video-track');
+        const slides = document.querySelectorAll('.video-slide');
+        let index = 0;
+
+        function updateSlide() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        prev.addEventListener('click', () => {
+            index = (index - 1 + slides.length) % slides.length;
+            updateSlide();
+        });
+
+        next.addEventListener('click', () => {
+            index = (index + 1) % slides.length;
+            updateSlide();
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">Crop Types</h2>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+
+    .datetime {
+        background-color: #e0e0e0;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.2em;
+    }
+
+    .market-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 20px auto;
+    }
+
+    .crop-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .crop-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .crop-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    .crop-card p {
+        margin: 5px 0;
+        color: #666;
+    }
+
+    .crop-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .quantity-input {
+        margin-top: 10px;
+        padding: 8px;
+        width: 90%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .submit-button {
+        display: block;
+        margin: 20px auto;
+        padding: 15px 30px;
+        background-color: #2f855a;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background-color: #45a049;
+    }
+
+    @media (max-width: 900px) {
+        .market-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .market-container {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="datetime" id="datetime"></div>
+
+<div class="market-container">
+    {% for crop in crop_types %}
+    <form method="POST" action="{% url 'crop_entry' %}">
+    <div class="crop-card">
+        <h3>{{ crop.name }}</h3>
+        {% if crop.images.all %}
+            <img src="{{ crop.images.first.image.url }}" alt="{{ crop.name }}">
+        {% else %}
+            <img src="/static/default_crop.jpg" alt="No Image Available">
+        {% endif %}
+        <p>{{ crop.description }}</p>
+	<input type="hidden" name="crop_id" value="{{ crop.id }}">
+        <input type="number" class="quantity-input" placeholder="Enter quantity (kg)" min="0">
+        <input type="number" class="quantity-input" placeholder="Enter cost (Rs.)" min="0">
+    </div>
+    </form>
+    {% endfor %}
+</div>
+
+<button class="submit-button" onclick="submitData()">Submit</button>
+
+<script>
+    function updateDateTime() {
+        const now = new Date();
+        document.getElementById('datetime').textContent = `Current Date : ${now.toLocaleDateString()}`;
+    }
+
+    updateDateTime();
+
+    function submitData() {
+        const cards = document.querySelectorAll('.crop-card');
+        let confirmation = 'Confirm your quantity and cost before submitting:\n';
+
+        cards.forEach(card => {
+            const cropName = card.querySelector('h3').innerText;
+            const inputs = card.querySelectorAll('.quantity-input');
+            const quantity = inputs[0].value || 0;
+            const cost = inputs[1].value || 0;
+            confirmation += `${cropName}: ${quantity} kg, Cost: Rs. ${cost}\n`;
+        });
+
+        if (confirm(confirmation)) {
+            alert('Submitted successfully!');
+        }
+    }
+</script>
+{% endblock %}
+
